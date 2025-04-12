@@ -25,4 +25,18 @@ chmod +x setup.sh
 python SEAL.py
 ```
 
-The repository contains code for all experiments discussed in the paper. Explore the provided implementations to reproduce our results and evaluate the robustness of our method against different attacks.
+The repository contains the code for all experiments discussed in the paper. Explore the provided implementations to reproduce our results and evaluate the robustness of our method against different attacks.
+
+### Citation
+
+If you find this work useful for your research, please consider citing our paper:
+
+```
+@article{arabi2025seal,
+  title={SEAL: Semantic Aware Image Watermarking},
+  author={Arabi, Kasra and Witter, R Teal and Hegde, Chinmay and Cohen, Niv},
+  journal={arXiv preprint arXiv:2503.12172},
+  year={2025}
+}
+```
+
