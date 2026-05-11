@@ -476,6 +476,11 @@ def generate_caption(image, processor, model, do_sample=False, device='cuda'):
     out = model.generate(**inputs)
     return processor.decode(out[0], skip_special_tokens=True)
 
+import hashlib
+
+def deterministic_hash(bits_tuple):
+    return int(hashlib.sha256(str(bits_tuple).encode()).hexdigest(), 16) % (2**32)
+
 def simhash(v, k, b, seed):
     keys = []
     set_random_seed(seed)
@@ -485,7 +490,7 @@ def simhash(v, k, b, seed):
             r_i = torch.randn_like(v)
             bits[i] = 1 if torch.dot(r_i, v) > 0 else 0
             bits[i] = (bits[i] + i + j * 1e4)
-        hash_value = hash(tuple(bits))
+        hash_value = deterministic_hash(tuple(bits))
         keys.append(hash_value)
     return keys
 
